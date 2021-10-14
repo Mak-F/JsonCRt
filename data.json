@@ -1,0 +1,99 @@
+{
+    "question_list": [
+        {
+            "text": [
+                "¡Hola! Bienvenido a nuestra tienda online, ¿en qué te puedo ayudar?"
+            ],
+            "retry_text": [
+                "Disculpa, no sabemos como responder al mensaje enviado. Por el momento podemos ayudarte con: ´Productos´, ´Sucursales´ y ´Horarios de atención´."
+            ],
+            "disabled": false,
+            "response_type": "LIST",
+            "response_options": [
+                "Productos",
+                "Sucursales",
+                "Horarios de atención"
+            ],
+            "id": 1,
+            "order": 1,
+            "internal_name": "menu",
+            "required": true
+        },
+        {
+            "text": [
+                "Para ver nuestros productos ingresá a https://www.tiendaonline.com/productos"
+            ],
+            "retry_text": ["Tenes alguna otra consulta? Respondé ´Sucursales´ u ´Horarios de atención´."],
+            "disabled": false,
+            "response_type": "LIST",
+            "response_options": [
+                "Sucursales",
+                "Horarios de atención"
+            ],
+            "id": 2,
+            "order": 2,
+            "internal_name": "productos",
+            "conditions_to_show": {
+                "any": [
+                    {
+                        "fact": "collected_data",
+                        "path": ".custom.menu",
+                        "operator": "equal",
+                        "value": "Productos"
+                    }
+                ]
+            },
+            "required": true
+        },
+        {
+            "text": [
+                "Nuestra sucursal se encuentra en Calle Falsa 123"
+            ],
+            "retry_text": ["Tenes alguna otra consulta? Respondé ´Productos´ u ´Horarios de atención´."],
+            "disabled": false,
+            "response_type": "LIST",
+            "response_options": [
+                "Productos",
+                "Horarios de atención"
+            ],
+            "id": 3,
+            "order": 3,
+            "internal_name": "sucursales",
+            "conditions_to_show": {
+                "any": [
+                    {
+                        "fact": "collected_data",
+                        "path": ".custom.menu",
+                        "operator": "equal",
+                        "value": "Sucursales"
+                    }
+                ]
+            },
+            "required": true
+        },
+        {
+            "text": ["Nuestra sucursal está abierta de 09:00 hs hasta 20:00hs"],
+            "retry_text": ["Tenes alguna otra consulta? Respondé ´Productos´ o ´Sucursales´."],
+            "disabled": false,
+            "response_type": "LIST",
+            "response_options": [
+                "Productos",
+                "Sucursales"
+            ],
+            "id": 4,
+            "order": 4,
+            "internal_name": "horarios",
+            "conditions_to_show": {
+                "any": [
+                    {
+                        "fact": "collected_data",
+                        "path": ".custom.menu",
+                        "operator": "equal",
+                        "value": "Horarios de atención"
+                    }
+                ]
+            },
+            "required": true
+        }
+    ]
+}
